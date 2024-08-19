@@ -1,0 +1,233 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+// ------------------------RESET--------------------
+*, *:before, *:after{
+    box-sizing: border-box;
+  }
+  
+  html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    text-size-adjust: none;
+  }
+  
+  footer, header, nav, section, main{
+    display: block;
+  }
+  
+  body{
+    line-height: 1;
+  }
+  
+  ol, ul{
+    list-style: none;
+  }
+  
+  blockquote, q{
+    quotes: none;
+  }
+  
+  blockquote:before, blockquote:after, q:before, q:after{
+    content: '';
+    content: none;
+  }
+  
+  table{
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  input{
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+// ------------------------RESET--------------------
+
+$color_main: #8a2be2;
+$color_gray: #d1d1d1;
+$color_gray_light: #ececec;
+$breakpoint_xl: 1200px;
+$breakpoint_lg: 992px;
+$breakpoint_md: 600px;
+$breakpoint_sm: 380px;
+
+
+body {
+    font-family: 'Open Sans';
+}
+
+section {
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.container {
+    position: relative;
+    max-width: $breakpoint_xl;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 25px;
+    @media (max-width: $breakpoint_lg) {
+      padding: 0 20px;
+    }
+    @media (max-width: $breakpoint_md) {
+      padding: 0 15px;
+    }
+    @media (max-width: $breakpoint_sm) {
+      padding: 0 10px;
+    }
+  }
+
+.grid5x6 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+
+    @media (max-width: $breakpoint_lg) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: $breakpoint_md) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: $breakpoint_sm) {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.card {
+    padding: 0.75rem;
+    border: 1px solid $color_gray;
+    border-radius: 0.5rem;
+    min-height: 8rem;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        border-color: $color_main;
+        background-color: rgba($color_main, .1);
+    }
+
+    .title {
+        display: block;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .description {
+        display: -webkit-box;
+        width: 100%;
+        -webkit-line-clamp: 9;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        font-size: 0.75rem;
+    }
+}
+
+.paginator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.paginator-item {
+    cursor: pointer;
+    font-size: 1.25rem;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &.active {
+        font-weight: 700;
+    }
+}
+
+form {
+    &.search {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        input[type="text"] {
+            min-width: 30%;
+        }
+    }
+
+    input[type="text"] {
+        padding: 0.5rem 0.75rem;
+        outline: none;
+        border: 1px solid $color_gray;
+        border-radius: 0.5rem;
+
+        &:focus {
+            outline: 2px solid blueviolet;
+        }
+    }
+
+    button {
+        cursor: pointer;
+        background-color: $color_main;
+        color: white;
+        border: none;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+            background-color: rgba($color_main, .8);
+        }
+    }
+}
+
+.loading {
+    position: fixed;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(50%, 50%);
+}
+
+.spinner {
+  color: rgb(229, 231, 235);
+  height: 50px;
+  width: 50px;
+  fill: $color_main;
+}
+
+.animation-spin {
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
+@keyframes spin {
+  0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+  }
+  100% {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+  }
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease-in-out;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+

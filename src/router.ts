@@ -1,13 +1,25 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
+import { createWebHistory, createRouter } from 'vue-router'
 
-import Home from './components/pages/Home.vue'
+import Home from './pages/Home.vue'
+import Item from './pages/Item.vue'
 
 const routes = [
-  { path: '/', component: Home },
+    { 
+        path: '/',
+        name: 'home',
+        component: Home,
+        props: route => ({ page: route.query.page })
+    },
+    { 
+        path: '/:id',
+        name: 'item',
+        component: Item,
+        props: true
+    },
 ]
 
 const router = createRouter({
-  history: createMemoryHistory(),
+  history: createWebHistory(),
   routes,
 })
 
